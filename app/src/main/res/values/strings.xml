@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FOD Icon &amp; Animation</string>
+    <string name="xposed_description">Choose your own SystemUI fingerprint icon and Lottie animations.</string>
+    <string-array name="xposed_scope">
+        <item>com.android.systemui</item>
+    </string-array>
+</resources>

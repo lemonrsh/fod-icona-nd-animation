@@ -1,0 +1,9 @@
+Xposed Framework API 82 (compile-time only)
+Copyright rovo89 and Xposed contributors
+License: Apache License 2.0 (see LICENSE-APACHE-2.0.txt)
+Upstream: https://api.xposed.info/ (de.robv.android.xposed:api:82)
+Mirror used: https://github.com/brianwalczak/TelephonySpoofer/tree/main/app/xposed/82
+SHA-256: f48c635f1c7469fdec0e00ad2ea0b7a6b2f5b55065784a35b7ca3a84615e8e25
+
+The JAR is used with Gradle's compileOnly configuration; LSPosed supplies the
+implementation on the device. It must not be bundled in the APK.

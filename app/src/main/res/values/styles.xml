@@ -1,0 +1,11 @@
+<resources>
+    <style name="Theme.FodCustomizer" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">#0C1215</item>
+        <item name="android:navigationBarColor">#0C1215</item>
+        <item name="android:colorAccent">#81E8B5</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#0C1215</item>
+    </style>
+</resources>
