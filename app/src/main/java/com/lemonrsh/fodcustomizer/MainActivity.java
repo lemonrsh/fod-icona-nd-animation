@@ -104,7 +104,7 @@ public final class MainActivity extends Activity {
         TextView stepsTitle = text("GET STARTED", 11, MINT, true);
         stepsTitle.setLetterSpacing(0.1f);
         steps.addView(stepsTitle);
-        TextView instructions = text("1  Choose your PNG or complete Lottie JSON below.\n2  Enable this module in LSPosed and scope SystemUI.\n3  Reboot after enabling or changing a file.", 13, TEXT, false);
+        TextView instructions = text("1  For the unlock effect, choose a JSON under Fingerprint unlock success effect.\n2  Enable this module in LSPosed and scope SystemUI.\n3  Reboot after enabling or changing a file.", 13, TEXT, false);
         instructions.setLineSpacing(dp(6), 1f);
         add(steps, instructions, 9);
         add(content, steps, 24);
@@ -116,7 +116,7 @@ public final class MainActivity extends Activity {
 
         TextView noteTitle = text("A note about your device", 16, TEXT, true);
         add(content, noteTitle, 27);
-        TextView note = text("Lock-screen and always-on FOD slots target common AOSP under-display resource names; your ROM may use different ones. SFPS usually refers to a side sensor. Keep a way to disable LSPosed if SystemUI fails.", 13, MUTED, false);
+        TextView note = text("The unlock success effect is separate from the AOD slot: clear AOD if you do not want an idle animation. Success effects need a compatible SystemUI and are not guaranteed to work. SFPS usually refers to a side sensor. Keep a way to disable LSPosed if SystemUI fails.", 13, MUTED, false);
         note.setLineSpacing(dp(4), 1f);
         add(content, note, 8);
         return scroll;

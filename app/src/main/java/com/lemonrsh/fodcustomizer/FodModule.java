@@ -78,6 +78,13 @@ public final class FodModule implements IXposedHookLoadPackage {
         hookResource("getDrawableForDensity", drawable, int.class, int.class, Resources.Theme.class);
         hookResource("openRawResource", raw, int.class);
         hookResource("openRawResource", raw, int.class, TypedValue.class);
+        if (ResourceMatcher.SYSTEM_UI.equals(param.processName)) {
+            try {
+                UnlockEffectHook.install(param.classLoader);
+            } catch (Throwable error) {
+                log("Unlock success hook unavailable (" + error.getClass().getSimpleName() + "); using stock.");
+            }
+        }
         log("Hooks installed in " + param.processName
                 + (internalDrawable ? " (including XML-inflated drawables)." : " (public drawable methods only)."));
     }
@@ -91,6 +98,11 @@ public final class FodModule implements IXposedHookLoadPackage {
                         if (ResourceMatcher.SYSTEM_UI.equals(app.getPackageName())) {
                             systemUiContext = app;
                             CACHE.clear();
+                            try {
+                                UnlockEffectHook.onSystemUiAttached();
+                            } catch (Throwable error) {
+                                log("Unlock effect initialization failed (" + error.getClass().getSimpleName() + "); using stock.");
+                            }
                         }
                     }
                 }
@@ -199,7 +211,7 @@ public final class FodModule implements IXposedHookLoadPackage {
         return slot;
     }
 
-    private static byte[] overrideFor(Slot slot) {
+    static byte[] overrideFor(Slot slot) {
         Context context = systemUiContext;
         if (context == null) {
             Application app = AndroidAppHelper.currentApplication();
@@ -252,7 +264,7 @@ public final class FodModule implements IXposedHookLoadPackage {
         }
     }
 
-    private static void log(String message) {
+    static void log(String message) {
         XposedBridge.log(TAG + message);
     }
 }

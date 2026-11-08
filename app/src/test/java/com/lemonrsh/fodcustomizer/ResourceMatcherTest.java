@@ -23,6 +23,13 @@ public class ResourceMatcherTest {
         assertNull(ResourceMatcher.match("com.vendor.systemui", "raw", "udfps_lockscreen_fp"));
     }
 
+    @Test public void unlockEffectIsASeparateOptInSlotNotARawResourceOverride() {
+        assertEquals(Slot.Kind.LOTTIE, Slot.UNLOCK_EFFECT.kind);
+        assertEquals(Slot.UNLOCK_EFFECT, Slot.fromFileName("unlock_effect.json"));
+        assertNotEquals(Slot.UNLOCK_EFFECT, Slot.UDFPS_AOD);
+        assertNull(ResourceMatcher.match("com.android.systemui", "raw", "unlock_effect"));
+    }
+
     @Test public void matchesOnlyKnownResourceTypesAndPackage() {
         assertEquals(Slot.ICON, ResourceMatcher.match("com.android.systemui", "drawable", "ic_fingerprint"));
         assertEquals(Slot.BACKGROUND, ResourceMatcher.match("com.android.systemui", "drawable", "fingerprint_bg"));
